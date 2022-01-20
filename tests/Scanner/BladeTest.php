@@ -2,8 +2,8 @@
 
 namespace Unn\GettextBlade\Tests;
 
-use Exception;
 use Gettext\Translations;
+use illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
 use PHPUnit\Framework\TestCase;
 use Unn\GettextBlade\Scanner\Blade;
@@ -57,7 +57,7 @@ class BladeTest extends TestCase
     public function testSetCompiler()
     {
         $scanner = new Blade();
-        $compiler = new BladeCompiler(new \Illuminate\Filesystem\Filesystem, sys_get_temp_dir());
+        $compiler = new BladeCompiler(new Filesystem, sys_get_temp_dir());
 
         // test fluent interface
         $this->assertSame($scanner, $scanner->setCompiler(null));
