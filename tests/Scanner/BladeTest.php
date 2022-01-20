@@ -4,6 +4,7 @@ namespace Unn\GettextBlade\Tests;
 
 use Exception;
 use Gettext\Translations;
+use Illuminate\View\Compilers\BladeCompiler;
 use PHPUnit\Framework\TestCase;
 use Unn\GettextBlade\Scanner\Blade;
 
@@ -51,5 +52,15 @@ class BladeTest extends TestCase
         $translation = $domain1->find(null, 'There is also a single green car.');
         $this->assertSame([$filePath => [17]], $translation->getReferences()->toArray());
         $this->assertSame('There are also %d green cars.', $translation->getPlural());
+    }
+
+    public function testSetCompiler()
+    {
+        $scanner = new Blade();
+        $compiler = new BladeCompiler(new \Illuminate\Filesystem\Filesystem, sys_get_temp_dir());
+
+        // test fluent interface
+        $this->assertSame($scanner, $scanner->setCompiler(null));
+        $this->assertSame($scanner, $scanner->setCompiler($compiler));
     }
 }

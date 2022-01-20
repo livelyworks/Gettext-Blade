@@ -2,6 +2,7 @@
 
 namespace Unn\GettextBlade\Tests;
 
+use Illuminate\View\Compilers\BladeCompiler;
 use PHPUnit\Framework\TestCase;
 use Unn\GettextBlade\Scanner\BladeFunctions;
 
@@ -29,5 +30,14 @@ class BladeFunctionsTest extends TestCase
         $this->assertSame(['This is a variable.'], $function->getArguments());
         $this->assertSame(2, $function->getLine());
         $this->assertSame($file, $function->getFilename());
+    }
+
+    public function testSetCompiler()
+    {
+        $scanner = new BladeFunctions();
+        $compiler = new BladeCompiler(new \Illuminate\Filesystem\Filesystem, sys_get_temp_dir());
+
+        $this->assertSame($scanner, $scanner->setCompiler(null));
+        $this->assertSame($scanner, $scanner->setCompiler($compiler));
     }
 }
