@@ -36,7 +36,7 @@ class BladeTest extends TestCase
         $bladeScanner->extractCommentsStartingWith('');
         $bladeScanner->scanFile($filePath);
 
-        $this->assertCount(6, $domain1);
+        $this->assertCount(7, $domain1);
 
         /** @var \Gettext\Translation $translation */
         $translation = $domain1->find(null, 'There are %s red cars.');

@@ -21,6 +21,12 @@
             /** Comment above the string */
             _i('Help, there is a comment above me.')
         @endphp
+        @php
+            _i(
+                'This is a multi-line function call. %s',
+                'Yes.'
+            )
+        @endphp
     @endsection
 </body>
 </html>
