@@ -59,7 +59,7 @@ class Blade extends PhpScanner
      * @param BladeCompiler|null $compiler
      * @return $this
      */
-    public function setCompiler(?BladeCompiler $compiler): static
+    public function setCompiler(?BladeCompiler $compiler)
     {
         $this->compiler = $compiler;
 
