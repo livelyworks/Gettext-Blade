@@ -32,7 +32,7 @@ class BladeRaw extends Blade
      *
      * @return static
      */
-    public function setCompiler(?BladeCompiler $compiler): static
+    public function setCompiler(?BladeCompiler $compiler)
     {
         throw new \BadMethodCallException("There is no need for a compiler when handling raw Blade files.");
     }
